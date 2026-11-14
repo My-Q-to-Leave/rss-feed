@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Question 3(b): an RSS 2.0 feed that provides security techniques and policies for web services.
+  Each item explains one technique or one policy in plain language and links to its source.
+  Newest items come first. Test it by pasting it into the W3C Feed Validation Service
+  (Validate by Direct Input) or by adding the file to an RSS reader.
+-->
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Web service security: techniques and policies</title>
+    <link>https://github.com/My-Q-to-Leave/rss-feed</link>
+    <atom:link href="https://my-q-to-leave.github.io/rss-feed/D00283663_security_feed.xml" rel="self" type="application/rss+xml"/>
+    <description>Security techniques and policies for web services, written for IT and security teams in Ireland. Each item explains one technique or policy in plain language and links to its source.</description>
+    <language>en-ie</language>
+    <category>Web service security</category>
+    <lastBuildDate>Mon, 26 Oct 2026 09:00:00 GMT</lastBuildDate>
+    <ttl>1440</ttl>
+    <docs>https://www.rssboard.org/rss-specification</docs>
+
+    <item>
+      <title>Technique: Encrypt all traffic with TLS</title>
+      <link>https://www.rfc-editor.org/rfc/rfc8446</link>
+      <description>Send every request and reply over HTTPS so nobody on the network can read or change them. Use TLS 1.3 where possible and never anything older than 1.2, install a valid certificate, redirect plain HTTP to HTTPS and tell browsers to use HTTPS only with the HSTS header.</description>
+      <category>Technique</category>
+      <category>Transport security</category>
+      <guid isPermaLink="false">security-feed-01-tls</guid>
+    </item>
+
+    <item>
+      <title>Technique: Authenticate every admin request</title>
+      <link>https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html</link>
+      <description>Make admins prove who they are before they use admin operations. Require strong passwords (or better, multi-factor login), slow down repeated failed logins, hand out short-lived tokens and send them with each request. Never accept a username or password in a web address.</description>
+      <category>Technique</category>
+      <category>Authentication</category>
+      <guid isPermaLink="false">security-feed-02-authn</guid>
+    </item>
+
+    <item>
+      <title>Technique: Authorise on the server and deny by default</title>
+      <link>https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html</link>
+      <description>Logging in is not enough. On every request, check on the server that this user is allowed to do this action. Give each role only what it needs and refuse anything that is not clearly allowed. Hiding an endpoint is not protection.</description>
+      <category>Technique</category>
+      <category>Access control</category>
+      <guid isPermaLink="false">security-feed-03-authz</guid>
+    </item>
+
+    <item>
+      <title>Technique: Validate all input</title>
+      <link>https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html</link>
+      <description>Treat every value from outside as untrusted. Check the type, length, format and allowed values on the server, accept only what is expected (an allow-list) and reject the rest early with a clear error.</description>
+      <category>Technique</category>
+      <category>Input validation</category>
+      <guid isPermaLink="false">security-feed-04-input</guid>
+    </item>
+
+    <item>
+      <title>Technique: Use parameterised queries</title>
+      <link>https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html</link>
+      <description>Never build SQL by joining text together. Send the query and the values separately using placeholders, so a value can never change the meaning of the query. Give the database account only the permissions it needs.</description>
+      <category>Technique</category>
+      <category>Injection</category>
+      <guid isPermaLink="false">security-feed-05-sqli</guid>
+    </item>
+
+    <item>
+      <title>Technique: Store passwords with a slow, salted hash</title>
+      <link>https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html</link>
+      <description>Never store passwords as plain text or with a fast hash. Use an algorithm built for passwords, such as Argon2id or bcrypt, with a unique salt for each password, so stolen hashes are very hard to crack.</description>
+      <category>Technique</category>
+      <category>Credential storage</category>
+      <guid isPermaLink="false">security-feed-06-passwords</guid>
+    </item>
+
+    <item>
+      <title>Technique: Switch off XML external entities and DTDs</title>
+      <link>https://cheatsheetseries.owasp.org/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.html</link>
+      <description>XML parsers can be tricked into reading local files or calling other servers through external entities. Turn off external entities and DTD processing when reading XML, and check documents against a schema.</description>
+      <category>Technique</category>
+      <category>XML security</category>
+      <guid isPermaLink="false">security-feed-07-xxe</guid>
+    </item>
+
+    <item>
+      <title>Technique: Escape output to stop script injection</title>
+      <link>https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html</link>
+      <description>Before showing outside text in a web page, encode it for the place it goes (HTML, attribute, URL or script) so any code in it is displayed as plain text instead of running.</description>
+      <category>Technique</category>
+      <category>Injection</category>
+      <guid isPermaLink="false">security-feed-08-xss</guid>
+    </item>
+
+    <item>
+      <title>Technique: Do not let outsiders choose what the server fetches</title>
+      <link>https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html</link>
+      <description>If the server fetches web addresses, fetch only fixed, approved ones and never follow links found inside outside data. This stops server-side request forgery, where an attacker makes the server call internal systems.</description>
+      <category>Technique</category>
+      <category>Server-side request forgery</category>
+      <guid isPermaLink="false">security-feed-09-ssrf</guid>
+    </item>
+
+    <item>
+      <title>Technique: Limit request rates and sizes</title>
+      <link>https://owasp.org/API-Security/</link>
+      <description>Set limits on how many requests a client can make and how big a request or reply can be. This protects the service from overload, by accident or on purpose, and slows down password guessing. Return a clear error when a limit is reached.</description>
+      <category>Technique</category>
+      <category>Availability</category>
+      <guid isPermaLink="false">security-feed-10-limits</guid>
+    </item>
+
+    <item>
+      <title>Technique: Log security events and watch them</title>
+      <link>https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html</link>
+      <description>Record logins, failed logins, access denials and validation failures with a time and who did it, but never record passwords or tokens. Protect the logs from change and alert someone when something unusual happens.</description>
+      <category>Technique</category>
+      <category>Monitoring</category>
+      <guid isPermaLink="false">security-feed-11-logging</guid>
+    </item>
+
+    <item>
+      <title>Technique: Sign XML when integrity must be provable</title>
+      <link>https://www.w3.org/TR/xmldsig-core1/</link>
+      <description>An XML signature lets a receiver check that a document came from the right sender and was not changed on the way. It is most useful when messages pass through other systems, for example in SOAP services.</description>
+      <category>Technique</category>
+      <category>XML security</category>
+      <guid isPermaLink="false">security-feed-12-xmlsig</guid>
+    </item>
+
+    <item>
+      <title>Technique: Apply REST-specific protections</title>
+      <link>https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html</link>
+      <description>Allow only the HTTP methods each endpoint needs, check the content type of requests, return error messages that do not give away internals, and send security headers. These small rules close many gaps in REST APIs.</description>
+      <category>Technique</category>
+      <category>REST security</category>
+      <guid isPermaLink="false">security-feed-13-rest</guid>
+    </item>
+
+    <item>
+      <title>Policy: Give people only the access they need</title>
+      <link>https://owasp.org/Top10/2021/A01_2021-Broken_Access_Control</link>
+      <description>Normal users can only read. Only admins can review reports, and admin accounts are personal and never shared. Review who has admin access regularly and remove it when it is no longer needed. Broken access control is the first risk in the OWASP Top 10 (2021).</description>
+      <category>Policy</category>
+      <category>Access control</category>
+      <guid isPermaLink="false">security-feed-14-least-privilege</guid>
+    </item>
+
+    <item>
+      <title>Policy: Collect only the personal data you need</title>
+      <link>https://eur-lex.europa.eu/eli/reg/2016/679/oj</link>
+      <description>Under the GDPR, personal data must be limited to what is necessary and kept no longer than needed. Store only the data the service really uses, and set a time after which data that is no longer needed is deleted.</description>
+      <category>Policy</category>
+      <category>Data protection</category>
+      <guid isPermaLink="false">security-feed-15-gdpr-minimise</guid>
+    </item>
+
+    <item>
+      <title>Policy: Report personal data breaches on time</title>
+      <link>https://www.dataprotection.ie/</link>
+      <description>If a breach puts people's rights at risk, the GDPR says the organisation must tell the supervisory authority without undue delay and, where possible, within 72 hours. In Ireland that is the Data Protection Commission. Have a written plan for who does what when a breach happens.</description>
+      <category>Policy</category>
+      <category>Data protection</category>
+      <guid isPermaLink="false">security-feed-16-breach</guid>
+    </item>
+
+    <item>
+      <title>Policy: Review content before it is published</title>
+      <description>Nothing goes live until an admin has checked it. Approve an item only if it clearly describes an AI tool giving false information, has a working source link and holds no personal data. Record which admin approved it. This is the service's own policy.</description>
+      <category>Policy</category>
+      <category>Content integrity</category>
+      <guid isPermaLink="false">security-feed-17-review</guid>
+    </item>
+
+    <item>
+      <title>Policy: Keep software patched and dependencies tracked</title>
+      <link>https://owasp.org/Top10/2021/A06_2021-Vulnerable_and_Outdated_Components</link>
+      <description>Keep a list of the libraries and tools the service uses and update them when security fixes come out. Using components with known weaknesses is a common way into a system, and it appears in the OWASP Top 10 (2021).</description>
+      <category>Policy</category>
+      <category>Maintenance</category>
+      <guid isPermaLink="false">security-feed-18-patching</guid>
+    </item>
+
+    <item>
+      <title>Policy: Plan for outages and keep backups</title>
+      <link>https://www.ncsc.gov.ie/</link>
+      <description>Decide how the service keeps working when something outside it fails, for example by showing stored data when a feed is down. Take regular backups, test that they can be restored, and follow national guidance from the National Cyber Security Centre in Ireland.</description>
+      <category>Policy</category>
+      <category>Resilience</category>
+      <guid isPermaLink="false">security-feed-19-availability</guid>
+    </item>
+  </channel>
+</rss>
